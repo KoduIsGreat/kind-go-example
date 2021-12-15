@@ -19,7 +19,11 @@ make apply
 ```bash
 k9s
 ```
-
+## curl the service
+```
+curl localhost/hello
+{"message": "Hello, world!"}
+```
 # References
 1. https://sookocheff.com/post/kubernetes/local-kubernetes-development-with-kind/
 2. https://kind.sigs.k8s.io/docs/user/ingress/
