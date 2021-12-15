@@ -1,0 +1,7 @@
+.*
+*.sh
+Makefile
+service.yml
+
+Dockerfile*
+docker-compose.yml

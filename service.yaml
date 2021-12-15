@@ -1,0 +1,38 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: go-hello
+  labels:
+    app: go-hello
+spec:
+  containers:
+    - name: go-hello
+      image: localhost:5000/go-hello:0.2
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-hello
+spec:
+  selector:
+    app: go-hello
+  ports:
+    # Port used by the Docker image
+    - port: 8888
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: go-hello-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: "/hello"
+            pathType: Prefix
+            backend:
+              service:
+                name: go-hello
+                port:
+                  number: 8888
+---
